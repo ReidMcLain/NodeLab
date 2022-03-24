@@ -1,28 +1,22 @@
-const path = require('path')
-const fs = require('fs')
-const rp = require('request-promise')
+const path = require('path');
+fs = require('fs');
+const rp = require('request-promise');
+
+const articlesPath = path.join(__dirname, "../popular-articles.json");
 
 rp('https://reddit.com/r/popular.json')
-    .then((res) => {
-        let articlesArray = []
+    .then(data => JSON.parse(data))
+    .then(articles => {
+        let articleArr = [];
 
-        JSON.parse(res).data.children.map((article) => {
-            let object = {
+        console.log(articles.data.children.forEach(article => {
+            const articleObj = {
                 title: article.data.title,
-                url: article.data.url,
-                author: article.data.author
+                author: article.data.author,
+                url: article.data.url
             }
-
-            articlesArray.push(object)
-            fs.writeFile("../popular-articles.json", JSON.stringify(articlesArray), (err) => {
-                if (err) {
-                    console.log(err);
-                }
-            })
-        })
+            articleArr.push(articleObj);
+        }));
+        fs.writeFileSync(articlesPath, JSON.stringify(articleArr));
     })
-    .catch((err) => {
-        if (err) { console.log(err) }
-
-
-    })
+    .catch((err) => console.log(err + "test"));

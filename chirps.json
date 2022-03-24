@@ -1,1 +1,7 @@
-[{"name":"Reid","chirp":"green"},{"name":"Garrett","chirp":"purple"},{"name":"Haylee","chirp":"violet"},{"name":"Josh","chirp":"yellow"},{"name":"Roderick","chirp":"pink"}]
+[
+  { "name": "Reid", "chirp": "green" },
+  { "name": "Garrett", "chirp": "purple" },
+  { "name": "Haylee", "chirp": "violet" },
+  { "name": "Josh", "chirp": "yellow" },
+  { "name": "Roderick", "chirp": "pink" }
+]
